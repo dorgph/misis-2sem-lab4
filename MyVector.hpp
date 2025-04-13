@@ -1,5 +1,6 @@
 #pragma once
 #include <utility>
+#include <cstddef>
 
 class MyVector{
 
@@ -8,10 +9,12 @@ private:
     size_t Size;
 
 public:
-    MyVector(size_t size): Size{size}; {Data = new int[Size]{0}; }
+    MyVector(size_t size): Size{size} {
+        Data = new int[Size]{0};
+    }
 
     // Copy constructor
-    MyVector(const Myvector &rhs) : MyVector{rh.sSyze} {
+    MyVector(const MyVector &rhs) : MyVector{rhs.Size} {
         for (int i = 0; i < Size; ++i){
             Data[i] = rhs.Data[i];
         }
@@ -20,23 +23,23 @@ public:
     // Copy =
     MyVector &operator=(const MyVector &rhs){
         MyVector tmp{rhs};
-        std::swap(*this, rhs);
+        std::swap(*this, tmp);
 
         return *this;
      }
 
     // Move constructor
-    MyVector(Myvector &&rhs) : Size{rhs.Size}, Data{rhs.Data}{
+    MyVector(MyVector &&rhs) : Size{rhs.Size}, Data{rhs.Data}{
         rhs.Data = nullptr;
     }
 
     // Move =
     MyVector &operator=(MyVector &&rhs){
         std::swap(Data, rhs.Data);
-        std::swap(Size, rha.Size);
+        std::swap(Size, rhs.Size);
 
         return *this;
     }
 
-    ~MyVecstor() {delete[] Data;}
+    ~MyVector() {delete[] Data;}
 };
