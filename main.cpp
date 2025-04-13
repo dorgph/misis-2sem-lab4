@@ -1,5 +1,8 @@
 #include "MyVector.hpp"
 #include "MySwap.hpp"
+#include "ContToString.hpp"
+#include "MyArrey.hpp"
+#include "ContToString.hpp"
 #include <iostream>
 #include <time.h>
 #include <string>
@@ -50,6 +53,15 @@ int main(){
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
+    MyArrey<std::string, 5> arr{};
+    
+    for (int i = 0; i < arr.GetSize(); ++i){
+        arr.At(i) = std::string("str") + std::to_string(i);
+    }
+
+    for (int i = 0; i < arr.GetSize(); ++i){
+        std::cout << arr.At(i) << std::endl;
+    }
 
     return 0;
 }
