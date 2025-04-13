@@ -1,6 +1,8 @@
 #include "MyVector.hpp"
+#include "MySwap.hpp"
 #include <iostream>
 #include <time.h>
+#include <string>
 
 const size_t NumIterations = 1000;
 const size_t VecSize = 1000000;
@@ -36,5 +38,18 @@ int main(){
 
     std::cout << "Copy time: " << CopyTime << " s" << std::endl;
     std::cout << "Move time: " << MoveTime << " s" << std::endl;
+
+    std::string a = "string_1";
+    std::string b = "string_2";
+
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+
+    MySwap(a, b);
+
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+
+
     return 0;
 }
